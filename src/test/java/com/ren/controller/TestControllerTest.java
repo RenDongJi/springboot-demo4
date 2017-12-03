@@ -28,31 +28,21 @@ import static org.junit.Assert.*;
  * @date: 2017/12/3 21:54.
  * @version: v1.0
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SpringbootDemo4Application.class)//确定启动类
-@WebAppConfiguration//junit模拟web
 @Transactional//确保数据回滚
-public class TestControllerTest {
-
-    @Resource
-    private WebApplicationContext webApplicationContext;
-
-    private MockMvc mockMvc;
-
-    @Before
-    public void setUp() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
+public class TestControllerTest extends BaseTest {
 
     @Test
     public void findDepartment() throws Exception {
+
         String uri = "/test/findDepartment";
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON)).andReturn();
+
         MockHttpServletResponse response = mvcResult.getResponse();
         int status = response.getStatus();
         System.out.println(status);
         String contentAsString = response.getContentAsString();
         System.out.println(contentAsString);
+
     }
 
 }
