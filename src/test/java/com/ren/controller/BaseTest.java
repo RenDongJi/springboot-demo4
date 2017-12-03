@@ -30,7 +30,7 @@ public class BaseTest {
     protected MockMvc mockMvc;
 
     @Before
-    public void setUp() throws Exception {
+    public void init() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 }

@@ -1,6 +1,7 @@
 package com.ren.controller;
 
 import com.ren.SpringbootDemo4Application;
+import com.ren.model.Department;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,11 +32,15 @@ import static org.junit.Assert.*;
 @Transactional//确保数据回滚
 public class TestControllerTest extends BaseTest {
 
+    @Before
+    public void setUp() throws Exception {}
+
     @Test
     public void findDepartment() throws Exception {
 
         String uri = "/test/findDepartment";
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON)).andReturn();
+        //MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON)).andReturn();
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri).param("name","123456").accept(MediaType.APPLICATION_JSON)).andReturn();
 
         MockHttpServletResponse response = mvcResult.getResponse();
         int status = response.getStatus();

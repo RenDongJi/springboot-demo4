@@ -25,7 +25,8 @@ public class TestController {
     private DepartmentService departmentService;
 
     @RequestMapping("/findDepartment")
-    public List<Department> findDepartment(){
+    public List<Department> findDepartment(Department department){
+        System.out.println(department.getName()+"-----==========");
         return departmentService.findDepartment();
     }
 }
