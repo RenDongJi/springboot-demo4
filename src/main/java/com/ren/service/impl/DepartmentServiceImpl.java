@@ -4,6 +4,7 @@ import com.ren.mappers.DepartmentMapper;
 import com.ren.model.Department;
 import com.ren.service.DepartmentService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * @version: v1.0
  */
 @Service
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Resource
